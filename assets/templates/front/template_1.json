@@ -1,0 +1,116 @@
+{
+  "templateName": "bofa",
+  "type": "front",
+  "complementary": "2",
+  "elements": [
+    {
+      "text": "BankOfAmerica",
+      "coordinates": [
+        0.08878350515463918,
+        0.11382113821138211,
+        0.4948453608247423,
+        0.21951219512195122
+      ],
+      "confidence": 0.5959663497634337,
+      "type": "bankLogo",
+      "height": 0.10569105691056911,
+      "width": 0.6341463414634146
+    },
+    {
+      "text": "BankAmericard",
+      "justified": "right",
+      "coordinates": [
+        0.9123711340206185,
+        0.3943089430894309
+      ],
+      "confidence": 0.9998338157434922,
+      "type": "cardTypeLogo",
+      "height": 0.056910569105691054,
+      "width": 0.34146341463414637
+    },
+    {
+      "text": "CASH REWARDS",
+      "justified": "right",
+      "coordinates": [
+        0.9149484536082474,
+        0.4349593495934959
+      ],
+      "confidence": 0.9798882761479107,
+      "type": "benefit",
+      "height": 0.08130081300813008,
+      "width": 0.5447154471544715
+    },
+    {
+      "text": "4000     2331     5875     9123",
+      "coordinates": [
+        0.08878350515463918,
+        0.5772357723577236
+      ],
+      "confidence": 0.9933715462684631,
+      "type": "creditCardNumber",
+      "height": 0.15569105691056911,
+      "width": 1.2926829268292683
+    },
+    {
+      "text": "12/18",
+      "coordinates": [
+        0.5489690721649485,
+        0.7195121951219512
+      ],
+      "confidence": 0.9303819787125254,
+      "type": "expirationDate",
+      "height": 0.06504065040650407,
+      "width": 0.2032520325203252
+    },
+    {
+      "text": "VALID\nTHRU",
+      "coordinates": [
+        0.4789690721649485,
+        0.7195121951219512
+      ],
+      "confidence": 0.9303819787125254,
+      "type": "text",
+      "height": 0.03004065040650407,
+      "width": 0.2032520325203252
+    },
+    {
+      "text": "VISA",
+      "justified": "right",
+      "coordinates": [
+        0.9149484536082474,
+        0.8382926829268293
+      ],
+      "confidence": 0.9999065399169922,
+      "type": "paymentNetworkLogo",
+      "height": 0.14634146341463414,
+      "width": 0.3252032520325203
+    },
+    {
+      "text": "Signature",
+      "justified": "right",
+      "coordinates": [
+        0.9149484536082474,
+        0.9161788617886179
+      ],
+      "confidence": 0.9997766290537023,
+      "type": "cardFlavor",
+      "height": 0.07317073170731707,
+      "width": 0.23170731707317074
+    },
+    {
+      "text": "CARDHOLDER",
+      "coordinates": [
+        0.08878350515463918,
+        0.8382926829268293
+      ],
+      "confidence": 0.9617610892324886,
+      "type": "userName",
+      "height": 0.0975609756097561,
+      "width": 0.5040650406504065
+    }
+  ],
+  "formFactor": {
+    "width": 388,
+    "height": 246
+  }
+}
