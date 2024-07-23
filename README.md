@@ -12,20 +12,20 @@ This project generates synthetic images of credit cards for training machine lea
 - **Annotation Files**: Generates annotation files compatible with YOLOv8 and Hugging Face in JSONL format.
 - **Card Background**: Generates different types of images to dress the credit card.
 
-#Annotations
+# Annotations
 
-##YOLOv8
+## YOLOv8
 
 The annotation files for YOLOv8 are generated as per the YOLOv8 dataset requirements. Each image will have a corresponding .txt file with the bounding box coordinates.
 
-##Hugging Face
+## Hugging Face
 
 The annotation files for Hugging Face are generated in JSONL format as per the Hugging Face image dataset documentation.
 
-#Contributions
+# Contributions
 
 We welcome contributions from the community. If you plan to use these components or modified versions in a product, research project, or any other initiative that adds value, please notify us. This helps us maintain a record of users and allows us to acknowledge your contributions on our website.
 
-#Contact
+# Contact
 
 For any inquiries or further information, please contact us at bytesWright@isdavid.com.
