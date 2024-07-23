@@ -37,4 +37,4 @@ We welcome contributions from the community. If you plan to use these components
 
 # Contact
 
-For any inquiries or further information, please contact us at bytesWright@isdavid.com.
+For any inquiries or further information, please contact us at [bytesWright@isdavid.com](mailto:bytesWright@isdavid.com).
