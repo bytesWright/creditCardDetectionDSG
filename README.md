@@ -21,18 +21,22 @@ the necessary annotation files for YOLOv8 and Hugging Face.
 This guide outlines the streamlined process for setting up the project using Blender, which includes automatic
 environment creation and package installation:
 
-1. **Clone the Repository**:
+1. **Install Anaconda**:
+    - Download and install Anaconda from [Anaconda's website](https://www.anaconda.com/download). Anaconda is necessary
+      to manage the environments and dependencies for the project.
+
+2. **Clone the Repository**:
     - Clone the project using the command:
       ```
       git clone https://github.com/bytesWright/creditCardDetectionDSG.git
       ```
 
-2. **Initialize the Environment with Blender**:
-    - Open the Blender file named generator.blend and run the script RUN-ME-FIRST-RUN-ME-ONCE. This script automatically
-      creates a new Anaconda environment tailored specifically for this project and installs the necessary dependencies
-      using pip to ensure compatibility with Blender's Python interpreter.
+3. **Initialize the Environment with Blender**:
+    - Open the Blender file named `generator.blend` and run the script `RUN-ME-FIRST-RUN-ME-ONCE`. This script
+      automatically creates a new Anaconda environment tailored specifically for this project and installs the necessary
+      dependencies using pip to ensure compatibility with Blender's Python interpreter.
 
-3. **Verify the Environment Setup**:
+4. **Verify the Environment Setup**:
     - After the initial environment setup, execute the `RUN-ME-SECOND` script located in the same Blender file. This
       script checks if the PIL library, a crucial dependency, is correctly installed in the Conda environment. This
       verification ensures that the environment is properly configured for synthetic dataset generation.
