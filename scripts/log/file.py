@@ -11,3 +11,10 @@ def append_line_to_file(file_path, text_line):
                 file.write(text_line + '\n')
     except Exception as e:
         print(f"An error occurred adding metadata for {file_path}: {e}")
+
+
+def ensure_output_directory(output_path):
+    if output_path is not None:
+        output_dir = os.path.dirname(output_path)
+        if output_dir and not os.path.exists(output_dir):
+            os.makedirs(output_dir)

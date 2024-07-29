@@ -3,6 +3,8 @@ import numpy as np
 from PIL import Image
 
 
+
+
 def load_image_from_file(file_path):
     return bpy.data.images.load(file_path)
 

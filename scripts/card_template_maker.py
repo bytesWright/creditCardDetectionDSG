@@ -95,7 +95,7 @@ def filter_and_correct_easyocr_output(image_path, easyocr_output):
         '5': 'cvc',
         '6': 'cardTypeLogo',
         '7': 'paymentNetworkLogo',
-        '8': 'bankLogo',
+        '8': 'bankName',
         '9': 'benefit',
         '10': 'cardFlavor',
         '11': 'domain',
@@ -177,7 +177,6 @@ def update_template_count(path, count):
 
 
 def get_user_inputs():
-    template_name = input("Enter the template name: ")
     print("Specify the template type:")
     print("1: front")
     print("2: back")
@@ -189,9 +188,7 @@ def get_user_inputs():
         template_type_num = input("Invalid input. Enter the number corresponding to the template type: ")
     template_type = template_type_options[template_type_num]
 
-    complementary = input("Enter the complementary information: ")
-
-    return template_name, template_type, complementary
+    return template_type
 
 
 def save_template(template, template_count, templates_dir, image):
@@ -226,7 +223,7 @@ def print_dict_in_columns(data, num_columns):
 
 
 def main():
-    template_name, template_type, complementary = get_user_inputs()
+    template_type, complementary = get_user_inputs()
 
     reader = easyocr.Reader(['en'])
     image_path = '../assets/templates/template_2.png'  # Replace with your image path
@@ -234,9 +231,7 @@ def main():
     elements = filter_and_correct_easyocr_output(image_path, result)
 
     template = {
-        'templateName': template_name,
         'type': template_type,
-        'complementary': complementary,
         'elements': elements
     }
 

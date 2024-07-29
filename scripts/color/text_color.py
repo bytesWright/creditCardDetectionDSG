@@ -1,5 +1,7 @@
 import math
 
+from scripts.color.generate_pallet import ColorPalette
+
 
 def luminance(r, g, b):
     a = [r / 255.0, g / 255.0, b / 255.0]
@@ -37,22 +39,26 @@ def recursive_extract_tuples_from_dict(d, result=None):
     return result
 
 
-def best_text_color_from_palette(palette, background_rgb):
+def best_text_color_from_palette(pallet: ColorPalette):
     black = (0, 0, 0)
     white = (255, 255, 255)
 
-    # Flatten the palette to include all colors
-    colors = recursive_extract_tuples_from_dict(palette, [black, white])
+    colors = [black, white]
 
     # Find the best contrast ratio
     best_color = None
+
+    primary = pallet.primary
+    complementary = pallet.get_complementary()
+
+    primary_contrast = [(c, contrast_ratio(c, primary)) for c in colors]
+    complementary_contrast = [(c, contrast_ratio(c, complementary)) for c in colors]
+
     highest_contrast = 0
-    for color in colors:
-        contrast = contrast_ratio(color, background_rgb)
+
+    for color, contrast in primary_contrast + complementary_contrast:
         if contrast > highest_contrast:
             highest_contrast = contrast
             best_color = color
 
     return best_color
-
-

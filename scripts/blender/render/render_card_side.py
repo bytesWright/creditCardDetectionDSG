@@ -6,32 +6,35 @@ import bpy
 from scripts.blender.purge_orphan_data import purge_orphan_data
 from scripts.blender.query.get_scene_and_camera import get_scene_and_camera
 from scripts.blender.query.selection import query_vertices_world_vector_in_vertex_group
-from scripts.blender.render.randomize_back_side_card import randomize_back_card, randomize_card_back_plastic
+from scripts.blender.render.randomize_back_side_card import randomize_back_side_card, randomize_card_back_plastic
 from scripts.blender.render.randomize_environment import randomize_environment
 from scripts.blender.render.randomize_front_side_card import randomize_front_side_card, randomize_card_front_plastic
 from scripts.blender.render.render_scene import render_scene
 from scripts.blender.spatial.compute_pixel_bounding_box import compute_obj_pixel_bounding_box, compute_vectors_pixel_bounding_box
-from scripts.log.file import append_line_to_file
+from scripts.log.file import append_line_to_file, ensure_output_directory
 from scripts.log.hugging_face_log import translate_to_hugging_face_format
 from scripts.log.vis_log import draw_bounding_boxes
 from scripts.log.yolo_log import create_yolo_description
-from scripts.templates.common import ensure_output_directory
 
 
-def render_card_side(root, output_path, bucket, index, scene, camera, card_side):
+def render_card_side(root, output_path, bucket_parameters, index, scene, camera, card_side):
+    bucket = bucket_parameters["name"]
     root, output_path, bucket, index, scene, camera = setup_variables(root, output_path, bucket, index, scene, camera)
 
-    randomize_environment(root) # call this first, it moves the camera and affects the computation of bounding boxes in pixel space
+    randomize_environment(root)  # call this first, it moves the camera and affects the computation of bounding boxes in pixel space
 
     card_object_name = "card"
     card_object = bpy.data.objects.get(card_object_name)
+    relative_bounding_boxes = card_log = None
 
     if card_side == 'front':
-        relative_bounding_boxes = randomize_front_side_card(root, card_object)
+        side_parameters = bucket_parameters.get("side_parameters", {}).get("front", {})
+        relative_bounding_boxes, card_log = randomize_front_side_card(root, card_object, **side_parameters)
         randomize_card_front_plastic(root)
 
     elif card_side == 'back':
-        relative_bounding_boxes = randomize_back_card(root, card_object)
+        side_parameters = bucket_parameters.get("side_parameters", {}).get("back", {})
+        relative_bounding_boxes, card_log = randomize_back_side_card(root, card_object, **side_parameters)
         randomize_card_back_plastic(root)
 
     output_file = f"{output_path}/images/{bucket}/cc_{index}.jpg"
@@ -87,6 +90,12 @@ def render_card_side(root, output_path, bucket, index, scene, camera, card_side)
         relative_bounding_boxes + bounding_box_data,
         output_file_vis,
     )
+
+    output_file_card_log = f"{output_path}/card_log/{bucket}/cc_{index}.log"
+    ensure_output_directory(output_file_card_log)
+
+    with open(output_file_card_log, 'w') as file:
+        json.dump(card_log.to_dict(), file, indent=4)
 
     purge_orphan_data()
 

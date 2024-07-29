@@ -24,7 +24,7 @@ def display_images_in_grid(images_with_modules, n_columns, spacing=10, font_size
     # Create a new blank image with appropriate size
     grid_width = n_columns * (max_width + spacing) - spacing
     grid_height = n_rows * (max_height + spacing) - spacing
-    grid_image = Image.new('RGB', (grid_width, grid_height), color='white')
+    grid_image = Image.new('RGBA', (grid_width, grid_height), color='white')
 
     draw = ImageDraw.Draw(grid_image)
 

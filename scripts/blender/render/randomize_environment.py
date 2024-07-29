@@ -1,4 +1,5 @@
 import math
+
 import bpy
 
 from scripts.blender.material.update import randomize_material_parameters_from_template
@@ -12,16 +13,16 @@ def randomize_environment(root):
     randomize_table_material(root)
     randomize_camera()
 
+
 def randomize_light():
     light_name = "Light"  # Replace with your light name
     light = bpy.data.objects.get(light_name)
 
-    intensity_range = (50, 800)  # Intensity range
-    color_range = ((.85, .85, .85), (1, 1, 1))  # Color range in RGB (0 to 1)
+    intensity_range = (350, 800)  # Intensity range
     temperature_range = (1000, 10000)  # Temperature range in Kelvin
 
     randomize_light_properties(
-        light, intensity_range, color_range=None, temperature_range=temperature_range
+        light, intensity_range, temperature_range=temperature_range
     )
 
     position_range = ("2m", "2m", "1m")  # X, Y, Z ranges for position

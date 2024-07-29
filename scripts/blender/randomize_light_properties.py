@@ -34,3 +34,5 @@ def randomize_light_properties(light, intensity_range=None, color_range=None, te
 
         temperature = random.uniform(temperature_range[0], temperature_range[1])
         blackbody_node.inputs[0].default_value = temperature
+
+    return intensity

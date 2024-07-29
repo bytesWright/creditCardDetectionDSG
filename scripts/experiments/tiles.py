@@ -71,7 +71,7 @@ def draw_tiling(coord_generator, filename):
     canvas_width = 400
     canvas_height = 400
 
-    im = Image.new(mode='RGB', size=(canvas_width, canvas_height))
+    im = Image.new(mode='RGBA', size=(canvas_width, canvas_height))
     draw = ImageDraw.Draw(im)
 
     for shape in coord_generator(canvas_width, canvas_height):

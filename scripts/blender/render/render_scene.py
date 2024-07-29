@@ -33,6 +33,6 @@ def render_scene(output_path, resolution_x=800, resolution_y=800, file_format='J
     # Set the output file path
     bpy.context.scene.render.filepath = output_path
 
-    print(f"rendering {bpy.context.scene.render.engine}")
+    print(f"    Rendering with {bpy.context.scene.render.engine}")
     # Perform the rendering
     bpy.ops.render.render(write_still=True)

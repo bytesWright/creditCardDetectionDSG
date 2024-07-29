@@ -7,11 +7,12 @@ from scripts.blender.spatial.compute_pixel_bounding_box import compute_vectors_p
 from scripts.blender.material.update import randomize_material_parameters_from_template
 from scripts.blender.spatial.compute_3d_bbox_positions import compute_3d_bbox_positions
 from scripts.blender.render.spatial import randomize_card_position_and_rotation, calculate_center_and_plane_size
-from scripts.generators.chip_generator import generate_monochromatic_chip
+from scripts.templates.generators.chip_generator import generate_monochromatic_chip
+
 from scripts.templates.render_template import render_template
 
 
-def randomize_front_side_card(root, card_object):
+def randomize_front_side_card(root, card_object, **side_parameters):
     if isinstance(card_object, str):
         card_object = bpy.data.objects.get(card_object)
 
@@ -20,8 +21,8 @@ def randomize_front_side_card(root, card_object):
     randomize_chip(root)
     bpy.context.view_layer.update()
 
-    image, relative_bounding_boxes = render_template(
-        root_path=root, width=900, height=540, side="front"
+    image, relative_bounding_boxes, card_log = render_template(
+        root_path=root, width=900, height=540, side="front", **side_parameters
     )
 
     assign_image_to_texture("Front", "Color", image)
@@ -50,7 +51,7 @@ def randomize_front_side_card(root, card_object):
             )
         })
 
-    return data
+    return data, card_log
 
 
 def randomize_card_front_plastic(root):

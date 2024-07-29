@@ -23,7 +23,7 @@ def identify_value(value):
     return value_type_name, sub_value_type_name
 
 
-def safe_get(lst, index):
+def safe_get_from_list(lst, index):
     if lst is None:
         return None
     try:
@@ -60,7 +60,7 @@ def generate_random_vector(vector_type, sub_value_type, length=None, value_range
         return [
             generate_random_scalar(
                 sub_value_type,
-                safe_get(value_ranges, i)
+                safe_get_from_list(value_ranges, i)
             )
             for i in range(length)
         ]
@@ -68,7 +68,7 @@ def generate_random_vector(vector_type, sub_value_type, length=None, value_range
         return tuple(
             generate_random_scalar(
                 sub_value_type,
-                safe_get(value_ranges, i)
+                safe_get_from_list(value_ranges, i)
             )
             for i in range(length)
         )

@@ -3,5 +3,6 @@ classes_to_ids = {
     "creditCardBack": 1,
     "text": 2,
     "chip": 3,
-    "band": 4
+    "band": 4,
+    "paymentNetworkLogo": 5
 }

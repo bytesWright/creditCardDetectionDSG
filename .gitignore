@@ -137,3 +137,5 @@ cython_debug/
 .idea/
 
 output
+e-name.env
+e-pyver.env

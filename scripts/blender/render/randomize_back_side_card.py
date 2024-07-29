@@ -7,21 +7,21 @@ from scripts.blender.render.spatial import randomize_card_position_and_rotation,
 from scripts.templates.render_template import render_template
 
 
-def randomize_back_side_card(root):
+def randomize_band(root):
     file_path = f"{root}/assets/materials_randomization/Band.json"
     randomize_material_parameters_from_template(file_path)
 
 
-def randomize_back_card(root, card_object):
+def randomize_back_side_card(root, card_object, **side_parameters):
     if isinstance(card_object, str):
         card_object = bpy.data.objects.get(card_object)
 
     randomize_card_position_and_rotation(card_object, side="back")
     bpy.context.view_layer.update()
 
-    randomize_back_side_card(root)
-    image, relative_bounding_boxes = render_template(
-        root_path=root, width=900, height=540, side="back"
+    randomize_band(root)
+    image, relative_bounding_boxes, card_log = render_template(
+        root_path=root, width=900, height=540, side="back", **side_parameters
     )
 
     assign_image_to_texture("Back", "Color", image)
@@ -51,7 +51,7 @@ def randomize_back_card(root, card_object):
             )
         })
 
-    return data
+    return data, card_log
 
 
 def randomize_card_back_plastic(root):

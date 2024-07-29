@@ -31,8 +31,8 @@ def draw_bounding_boxes(image_path, annotations, output_path):
     original_width, original_height = image.size
 
     # Calculate the new dimensions (a quarter of the original size)
-    new_width = original_width // 4
-    new_height = original_height // 4
+    new_width = int(original_width / 2)
+    new_height = int(original_height / 2)
 
     # Resize the image
     resized_image = image.resize((new_width, new_height))
