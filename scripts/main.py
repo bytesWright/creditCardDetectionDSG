@@ -13,13 +13,11 @@ def setup_memory_optimized_settings():
 
 
 def main(wd, buckets, dataset_name, classes, **kwargs):
-    main_data_source = DiskDataset("@DS/ds.plain_id")
-
+    plain_id_ds = DiskDataset("@DS/ds.plain_id")
     photo_id_ds = DiskDataset("@DS/ds.photo_id")
     background_ds = DiskDataset("@DS/ds.indoors")
 
-
-    root = os.path.join(wd, "output", dataset_name)
+    root = str(os.path.join(wd, "output", dataset_name))
 
     setup_memory_optimized_settings()
 
@@ -28,7 +26,7 @@ def main(wd, buckets, dataset_name, classes, **kwargs):
             progress_info.bucket_name,
             progress_info.index,
             root,
-            main_data_source,
+            plain_id_ds,
             photo_id_ds,
             background_ds,
             classes

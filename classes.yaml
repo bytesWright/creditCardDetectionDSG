@@ -1,3 +1,10 @@
 horizontal_card: 0
 vertical_card: 1
 horizontal_card_back: 2
+photo: 3
+slim-barcode: 4
+pdf417: 5
+mrz-text: 6
+mrz: 6
+barcode: 7
+qrcode: 8

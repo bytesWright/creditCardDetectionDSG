@@ -58,17 +58,13 @@ def start_blender_instance(progress, task_id, blender_path, blend_file, script_p
                 full_output.append(line)
                 line_clean = line.strip()
 
-                if task_id == 1:
+                if task_id == 4:
+                    # print(f"W{task_id}>", line_clean, end="\n")
                     pass
-                    #print(f"W{task_id}>", line_clean, end="\n")
-
-                if "Traceback" in line_clean or "Error:" in line_clean:
-                    has_python_error = True
 
                 if line_clean.startswith("PROGRESS:"):
                     val = int(float(line_clean.split(":")[1]))
 
-                    # Track incremental progress
                     increment = val - progress_since_restart
                     completed_total += increment
                     progress_since_restart = val
@@ -114,6 +110,7 @@ def run_blender_with_progress(blender_path, blend_file, script_path, jobs):
 
         threads = []
         for i, job_config in enumerate(jobs):
+
             t = threading.Thread(
                 target=start_blender_instance,
                 args=(progress, i, blender_path, blend_file, script_path, job_config)
@@ -215,7 +212,7 @@ def split_workload_with_offsets(metadata, n):
 
 
 def main(instances=8):
-    dataset_name = "IdCardV0.8"
+    dataset_name = "IdCardV0.11"
 
     # Read classes.yaml
     with open("classes.yaml", "r") as f:
